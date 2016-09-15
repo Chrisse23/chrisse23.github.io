@@ -36,7 +36,7 @@
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
-            ['R', 'Search for a %m.type containing %s', 'search_songs', 'track', 'Arcade fire']
+            ['R', 'Search for a %m.type containing %s', 'search_songs', 'track', 'Arcade fire'],
             ['R', 'Get from variable $s from position %n', 'get_from_position', '', 0]
         ],
         menus: {
