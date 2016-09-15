@@ -12,8 +12,8 @@
         console.log(searchTerm);
         $.ajax({
           method: 'GET',
-          url: 'https://api.spotify.com/v1/search',
-          data: { q: encodeURIComponent(searchTerm), type: type, limit: 10 }
+          url: 'https://api.spotify.com/v1/search?q=' + searchTerm,
+          data: { type: type, limit: 10 }
         })
           .done(function(response) {
             var data = response[type+'s'].items;
