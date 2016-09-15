@@ -9,10 +9,11 @@
     };
 
     ext.search_songs = function(type, searchTerm, callback) {
+        console.log(searchTerm);
         $.ajax({
           method: 'GET',
           url: 'https://api.spotify.com/v1/search',
-          data: { q: searchTerm, type: type, limit: 10 }
+          data: { q: encodeURIComponent(searchTerm), type: type, limit: 10 }
         })
           .done(function(response) {
             var data = response[type+'s'].items;
@@ -31,7 +32,7 @@
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
-            ['R', 'Search for a %m.type containing %s', 'search_songs', 'track, Arcade fire']
+            ['R', 'Search for a %m.type containing %s', 'search_songs', 'track', 'Arcade fire']
         ],
         menus: {
             type: ['track', 'album', 'playlist']
