@@ -28,10 +28,16 @@
           });
     };
 
+    ext.get_from_position = function(data, position, callback) {
+        var list = data.split(',');
+        callback(list[position]);
+    };
+
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
             ['R', 'Search for a %m.type containing %s', 'search_songs', 'track', 'Arcade fire']
+            ['R', 'Get from variable $s from position %n', 'get_from_position', '', 0]
         ],
         menus: {
             type: ['track', 'album', 'playlist']
