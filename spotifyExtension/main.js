@@ -17,14 +17,14 @@
         })
           .done(function(response) {
             var data = response[type+'s'].items;
-            var formatedResponse = '';
+            var formatedResponse = [];
 
             for (var i = 0; i < data.length; i++) {
                 var duration = data[i].duration_ms / 60000;
-                formatedResponse += 'Track: ' + data[i].name + ' Artist/band: ' + data[i].artists[0].name + ' Duration: ' + duration;
+                formatedResponse.push('Track: ' + data[i].name + ' Artist/band: ' + data[i].artists[0].name + ' Duration: ' + duration);
             };
 
-            callback(response[type+'s'].items);
+            callback(formatedResponse);
           });
     };
 
