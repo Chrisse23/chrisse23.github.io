@@ -17,12 +17,11 @@
         })
           .done(function(response) {
             var data = response[type+'s'].items;
-            var formatedResponse = [];
+            var formatedResponse = '';
 
             for (var i = 0; i < data.length; i++) {
                 var duration = data[i].duration_ms / 60000;
-                formatedResponse.push(data[i].name + ' ' + 
-                    data[i].hasOwnProperty('artists') ? data[i].artists[0].name : '' + ' ' + duration);
+                formatedResponse += data[i].name + ' ' + data[i].artists[0].name + ' ' + duration + \n;
             };
 
             callback(formatedResponse);
