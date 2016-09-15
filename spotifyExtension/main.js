@@ -29,7 +29,6 @@
     };
 
     ext.get_from_position = function(data, position, callback) {
-        var list = data.split(',');
         callback(list[position]);
     };
 
