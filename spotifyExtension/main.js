@@ -34,7 +34,7 @@
             ['R', 'Search for a %m.type containing %s', 'search_songs', 'track', 'Arcade fire']
         ],
         menus: {
-            type: ['track, album, playlist']
+            type: ['track', 'album', 'playlist']
         }
     };
 
