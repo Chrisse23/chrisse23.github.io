@@ -24,7 +24,7 @@
                 formatedResponse += 'Track: ' + data[i].name + ' Artist/band: ' + data[i].artists[0].name + ' Duration: ' + duration;
             };
 
-            callback(formatedResponse);
+            callback(response[type+'s'].items);
           });
     };
 
