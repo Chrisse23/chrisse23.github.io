@@ -29,7 +29,7 @@
     };
 
     ext.get_from_position = function(data, position, callback) {
-        callback(list[position]);
+        callback(data[position]);
     };
 
     // Block and block menu descriptions
