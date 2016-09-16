@@ -9,7 +9,6 @@
     };
 
     ext.search_songs = function(type, searchTerm, callback) {
-        console.log(searchTerm);
         $.ajax({
           method: 'GET',
           url: 'https://api.spotify.com/v1/search?q=' + searchTerm,
@@ -29,7 +28,8 @@
     };
 
     ext.get_from_position = function(data, position, callback) {
-        callback(data[parseInt(position)]);
+        callback(data[position]);
+        console.log(data[position]);
     };
 
     // Block and block menu descriptions
