@@ -28,15 +28,15 @@
     };
 
     ext.get_from_position = function(data, position, callback) {
-        console.log(data[position]);
-        callback(data[position]);
+        console.log(data[parseInt(position)]);
+        callback(data[parseInt(position)]);
     };
 
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
             ['R', 'Search for a %m.type containing %s', 'search_songs', 'track', 'Arcade fire'],
-            ['r', 'Get from variable %s from position %n', 'get_from_position', 'response', 0]
+            ['r', 'Get from variable %s from position %s', 'get_from_position', 'response', '0']
         ],
         menus: {
             type: ['track', 'album', 'playlist']
