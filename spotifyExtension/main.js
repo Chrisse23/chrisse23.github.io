@@ -33,7 +33,7 @@
     var descriptor = {
         blocks: [
             ['R', 'Search for a %m.type containing %s', 'search_songs', 'track', 'Arcade fire'],
-            ['R', 'Get from variable %s from position %n property $m.properties', 'get_from_position', 'response', 0, 'name']
+            ['R', 'Get from variable %s from position %n property %m.properties', 'get_from_position', 'response', 0, 'name']
         ],
         menus: {
             type: ['track', 'album', 'playlist'],
