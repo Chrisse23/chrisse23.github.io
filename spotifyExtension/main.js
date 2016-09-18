@@ -24,7 +24,7 @@
         if (properties === 'artist') {
             var value = data[position][properties + 's'][0]['name'];
         } else if (properties === 'artistId') {
-            var value = data[position][properties + 's'][0]['id'];
+            var value = data[position]['artists'][0]['id'];
         } else {
             var value = data[position][properties];
         }
