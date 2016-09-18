@@ -23,6 +23,8 @@
     ext.get_from_position = function(data, position, properties) {
         if (properties === 'artist') {
             var value = data[position][properties + 's'][0]['name'];
+        } else if (properties === 'artistId') {
+            var value = data[position][properties + 's'][0]['id'];
         } else {
             var value = data[position][properties];
         }
@@ -47,6 +49,17 @@
         return document.getElementById('track').ended;
     };
 
+    ext.get_related_artists = function(id, callback) {
+        $.ajax({
+          method: 'GET',
+          url: 'https://api.spotify.com/v1/artists/' + id + '/related-artists'
+        })
+          .done(function(response) {
+            var data = response['artists'].items;
+            callback(data);
+          });
+    };
+
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
@@ -54,11 +67,12 @@
             ['r', 'Get from variable %s from position %n property %m.properties', 'get_from_position', ' ', 0, 'name'],
             [' ', 'Play preview from url %s', 'play_preview', ' '],
             [' ', 'Stop preview', 'stop_preview'],
-            ['r', 'Has the song ended', 'has_it_ended']
+            ['r', 'Has the song ended', 'has_it_ended'],
+            ['R', 'Related artists to %s', 'get_related_artists', ' ']
         ],
         menus: {
             type: ['track', 'album', 'playlist'],
-            properties: ['name', 'artist', 'preview_url']
+            properties: ['name', 'artist', 'preview_url', 'artistId']
         }
     };
 
