@@ -36,7 +36,7 @@
             ['R', 'Get from variable %s from position %n property $m.properties', 'get_from_position', 'response', 0, 'name']
         ],
         menus: {
-            type: ['track', 'album', 'playlist']
+            type: ['track', 'album', 'playlist'],
             properties: ['name', 'artist', 'preview_url']
         }
     };
