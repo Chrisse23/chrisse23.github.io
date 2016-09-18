@@ -32,6 +32,8 @@
     ext.play_preview = function(preview_url) {
         if ($('body').find('#track').length === 0) {
             $('body').append('<audio id=track src=' + preview_url + ' crossorigin=anonymous></audio>');
+        } else {
+            $('#track').attr('src', preview_url);
         }
 
         document.getElementById('track').play();
