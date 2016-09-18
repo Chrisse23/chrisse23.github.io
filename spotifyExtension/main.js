@@ -20,11 +20,11 @@
           });
     };
 
-    ext.get_from_position = function(data, position, property, callback) {
-        if (property === 'artist') {
-            var value = data[position][property][0]['name'];
+    ext.get_from_position = function(data, position, properties, callback) {
+        if (properties === 'artist') {
+            var value = data[position][properties][0]['name'];
         } else {
-            var value = data[position][property];
+            var value = data[position][properties];
         }
         callback(value);
     };
