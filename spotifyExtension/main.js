@@ -51,7 +51,7 @@
             ['R', 'Search for a %m.type containing %s', 'search_songs', 'track', 'Arcade fire'],
             ['r', 'Get from variable %s from position %n property %m.properties', 'get_from_position', ' ', 0, 'name'],
             [' ', 'Play preview from url %s', 'play_preview', ' '],
-            [' ', 'Stop preview', 'stop_preview']
+            [' ', 'Stop preview', 'stop_preview'],
             ['r', 'Has the song ended', 'has_it_ended']
         ],
         menus: {
