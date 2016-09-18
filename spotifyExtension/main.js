@@ -16,19 +16,16 @@
         })
           .done(function(response) {
             var data = response[type+'s'].items;
-            var formatedResponse = [];
-
-            for (var i = 0; i < data.length; i++) {
-                var duration = data[i].duration_ms / 60000;
-                formatedResponse.push('Track: ' + data[i].name + ' Artist/band: ' + data[i].artists[0].name + ' Duration: ' + duration);
-            };
-
-            callback(formatedResponse);
+            callback(data);
           });
     };
 
-    ext.get_from_position = function(data, position, callback) {
-        var value = data[position];
+    ext.get_from_position = function(data, position, property, callback) {
+        if (property === 'artist') {
+            var value = data[position][property][0]['name'];
+        } else {
+            var value = data[position][property];
+        }
         callback(value);
     };
 
@@ -36,10 +33,11 @@
     var descriptor = {
         blocks: [
             ['R', 'Search for a %m.type containing %s', 'search_songs', 'track', 'Arcade fire'],
-            ['R', 'Get from variable %s from position %n', 'get_from_position', 'response', 0]
+            ['R', 'Get from variable %s from position %n property $m.properties', 'get_from_position', 'response', 0, 'name']
         ],
         menus: {
             type: ['track', 'album', 'playlist']
+            properties: ['name', 'artist', 'preview_url']
         }
     };
 
