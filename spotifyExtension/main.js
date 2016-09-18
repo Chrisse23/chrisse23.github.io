@@ -30,12 +30,19 @@
     };
 
     ext.play_preview = function(preview_url) {
-        $('body').append('<audio id=track src=' + preview_url + ' crossorigin=anonymous></audio>');
-        $('#track').play();
+        if ($('body').find('#track').length === 0) {
+            $('body').append('<audio id=track src=' + preview_url + ' crossorigin=anonymous></audio>');
+        }
+
+        document.getElementById('track').play();
     };
 
     ext.stop_preview = function() {
-        $('#track').pause();
+        document.getElementById('track').pause();
+    };
+
+    ext.has_it_ended = function() {
+        return document.getElementById('track').ended;
     };
 
     // Block and block menu descriptions
@@ -45,6 +52,7 @@
             ['r', 'Get from variable %s from position %n property %m.properties', 'get_from_position', ' ', 0, 'name'],
             [' ', 'Play preview from url %s', 'play_preview', ' '],
             [' ', 'Stop preview', 'stop_preview']
+            ['r', 'Has the song ended', 'has_it_ended']
         ],
         menus: {
             type: ['track', 'album', 'playlist'],
