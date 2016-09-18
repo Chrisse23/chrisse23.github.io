@@ -55,7 +55,7 @@
           url: 'https://api.spotify.com/v1/artists/' + id + '/related-artists'
         })
           .done(function(response) {
-            var data = response['artists'].items;
+            var data = response['artists'];
             callback(data);
           });
     };
