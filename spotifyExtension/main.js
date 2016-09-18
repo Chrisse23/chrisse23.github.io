@@ -22,7 +22,7 @@
 
     ext.get_from_position = function(data, position, properties) {
         if (properties === 'artist') {
-            var value = data[position][properties][0]['name'];
+            var value = data[position][properties + 's'][0]['name'];
         } else {
             var value = data[position][properties];
         }
@@ -33,7 +33,7 @@
     var descriptor = {
         blocks: [
             ['R', 'Search for a %m.type containing %s', 'search_songs', 'track', 'Arcade fire'],
-            ['r', 'Get from variable %s from position %n property %m.properties', 'get_from_position', '', 0, 'name']
+            ['r', 'Get from variable %s from position %n property %m.properties', 'get_from_position', '    ', 0, 'name']
         ],
         menus: {
             type: ['track', 'album', 'playlist'],
