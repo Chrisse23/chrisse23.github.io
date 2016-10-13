@@ -8,6 +8,8 @@
         return {status: 2, msg: 'Ready'};
     };
 
+    var audio = new Audio();
+
     ext.search_songs = function(type, searchTerm, callback) {
         $.ajax({
           method: 'GET',
@@ -32,21 +34,16 @@
     };
 
     ext.play_preview = function(preview_url) {
-        if ($('body').find('#track').length === 0) {
-            $('body').append('<audio id=track src=' + preview_url + ' crossorigin=anonymous></audio>');
-        } else {
-            $('#track').attr('src', preview_url);
-        }
-
-        document.getElementById('track').play();
+        audio.src = preview_url;
+        audio.play();
     };
 
     ext.stop_preview = function() {
-        document.getElementById('track').pause();
+        audio.pause();
     };
 
     ext.has_it_ended = function() {
-        return document.getElementById('track').ended;
+        return audio.ended;
     };
 
     ext.get_related_artists = function(id, callback) {
