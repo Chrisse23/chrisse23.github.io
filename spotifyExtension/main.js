@@ -1,4 +1,8 @@
 (function(ext) {
+    var audio = new Audio();
+    var timeToWait = 400;
+    var volumeFadeIn = false;
+    var volumeFadeOut = false;
     // Cleanup function when the extension is unloaded
     ext._shutdown = function() {};
 
@@ -7,8 +11,6 @@
     ext._getStatus = function() {
         return {status: 2, msg: 'Ready'};
     };
-
-    var audio = new Audio();
 
     ext.search_songs = function(type, searchTerm, callback) {
         $.ajax({
@@ -57,15 +59,58 @@
           });
     };
 
+    ext.start_from = function(seconds) {
+        audio.currentTime = seconds;
+    };
+
+    ext.fade_in = function() {
+        if (!volumeFadeIn) {
+            audio.volume = 0;
+            volumeFadeIn = true;
+        }
+
+        if (audio.volume < 1 && (audio.volume + 0.1) < 1) {
+            setTimeout(function() {
+                audio.volume += 0.1;
+                timeToWait += 100;
+                fadeIn();
+            }, timeToWait);
+        } else {
+            timeToWait = 400;
+            volumeFadeIn = false;
+        }
+    }
+
+    ext.fade_out = function() {
+        if (!volumeFadeOut) {
+            audio.volume = 1;
+            volumeFadeOut = true;
+        }
+
+        if (audio.volume > 0 && (audio.volume - 0.1) >= 0) {
+            setTimeout(function() {
+                audio.volume -= 0.1;
+                timeToWait += 100;
+                fadeOut();
+            }, timeToWait);
+        } else {
+            timeToWait = 400;
+            volumeFadeOut = false;
+        }
+    }
+
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
-            ['R', 'Search for a %m.type containing %s', 'search_songs', 'track', 'Håkan Hellström'],
-            ['r', 'Get from variable %s from position %n property %m.properties', 'get_from_position', ' ', 0, 'name'],
-            [' ', 'Play preview from url %s', 'play_preview', ' '],
-            [' ', 'Stop preview', 'stop_preview'],
-            ['r', 'Has the song ended', 'has_it_ended'],
-            ['R', 'Related artists to %s', 'get_related_artists', ' ']
+            ['R', 'Sök efter %m.type som innehåller %s', 'search_songs', 'track', 'Håkan Hellström'],
+            ['r', 'Hämta från variabel %s på position %n property %m.properties', 'get_from_position', ' ', 0, 'namn'],
+            [' ', 'Spela låt från url %s', 'play_preview', ' '],
+            [' ', 'Pausa', 'stop_preview'],
+            ['r', 'Har låten slutat spela', 'has_it_ended'],
+            ['R', 'Relaterade artister till %s', 'get_related_artists', ' '],
+            [' ', 'Starta från %n sekunder', ' '],
+            [' ', 'Fade in', ' '],
+            [' ', 'Fade out', ' '],
         ],
         menus: {
             type: ['track', 'album', 'playlist'],
