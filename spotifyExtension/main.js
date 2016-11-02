@@ -73,7 +73,7 @@
             setTimeout(function() {
                 audio.volume += 0.1;
                 timeToWait += 100;
-                fadeIn();
+                ext.fade_in();
             }, timeToWait);
         } else {
             timeToWait = 400;
@@ -91,7 +91,7 @@
             setTimeout(function() {
                 audio.volume -= 0.1;
                 timeToWait += 100;
-                fadeOut();
+                ext.fade_out();
             }, timeToWait);
         } else {
             timeToWait = 400;
