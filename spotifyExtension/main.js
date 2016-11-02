@@ -108,9 +108,9 @@
             [' ', 'Pausa', 'stop_preview'],
             ['r', 'Har låten slutat spela', 'has_it_ended'],
             ['R', 'Relaterade artister till %s', 'get_related_artists', ' '],
-            [' ', 'Starta från %n sekunder', ' '],
-            [' ', 'Fade in', ' '],
-            [' ', 'Fade out', ' '],
+            [' ', 'Starta från %n sekunder', 'start_from'],
+            [' ', 'Fade in', 'fade_in'],
+            [' ', 'Fade out', 'fade_out'],
         ],
         menus: {
             type: ['track', 'album', 'playlist'],
