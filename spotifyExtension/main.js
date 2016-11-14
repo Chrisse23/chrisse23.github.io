@@ -30,7 +30,11 @@
         } else if (properties === 'artistId') {
             var value = data[position]['artists'][0]['id'];
         } else {
-            var value = data[position][properties];
+            if (properties === 'låtnamn') {
+                var value = data[position]['name'];
+            } else if(properties === 'låten') {
+                var value = data[position]['preview_url'];
+            }
         }
         return(value);
     };
@@ -114,7 +118,7 @@
         ],
         menus: {
             type: ['track', 'album', 'playlist'],
-            properties: ['name', 'artist', 'preview_url', 'artistId']
+            properties: ['låtnamn', 'artist', 'låten', 'artistId']
         }
     };
 
