@@ -107,7 +107,7 @@
     var descriptor = {
         blocks: [
             ['R', 'Sök efter %m.type som innehåller %s', 'search_songs', 'track', 'Håkan Hellström'],
-            ['r', 'Hämta från variabel %s på position %n property %m.properties', 'get_from_position', ' ', 0, 'namn'],
+            ['r', 'Hämta från variabel %s på position %n property %m.properties', 'get_from_position', ' ', 0, 'låtnamn'],
             [' ', 'Spela låt från url %s', 'play_preview', ' '],
             [' ', 'Pausa', 'stop_preview'],
             ['r', 'Har låten slutat spela', 'has_it_ended'],
