@@ -103,6 +103,14 @@
         }
     }
 
+    function get_access_token() {
+        if (window.location.hash.indexOf('access_token') > -1) {
+            document.cookie = 'access_token_spotify=' + window.location.hash.replace('#access_token=', '');
+
+            window.location.href = window.location.href.substring(0, window.location.href.indexOf('#'));
+        }
+    }
+
     ext.authenticate_with_Spotify = function() {
         var clientId = '3fe6c126855e4930a7991284fa8c240b';
         var redirectUri = 'http://scratchx.org/?url=https://chrisse23.github.io/spotifyExtension/project.sbx#scratch';
