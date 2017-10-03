@@ -103,6 +103,20 @@
         }
     }
 
+    ext.authenticate_with_Spotify = function() {
+        var clientId = '3fe6c126855e4930a7991284fa8c240b';
+        var redirectUri = 'http://scratchx.org/?url=https://chrisse23.github.io/spotifyExtension/project.sbx#scratch';
+        var permissions = [];
+    
+        var authorizeUrl = 'https://accounts.spotify.com/authorize';
+        authorizeUrl = authorizeUrl + '?response_type=token';
+        authorizeUrl = authorizeUrl + '&client_id=' + encodeURIComponent(clientId);
+        authorizeUrl = authorizeUrl + '&redirect_uri=' + encodeURIComponent(redirectUri);
+        authorizeUrl = authorizeUrl + '&scope=' + permissions.join('%20');
+    
+        window.location = authorizeUrl;
+    }
+
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
@@ -115,6 +129,7 @@
             [' ', 'Starta från %n sekunder', 'start_from'],
             [' ', 'Fade in', 'fade_in'],
             [' ', 'Fade out', 'fade_out'],
+            [' ', 'Logga in med Spotify', 'authenticate_with_Spotify']
         ],
         menus: {
             type: ['track', 'album', 'playlist'],
